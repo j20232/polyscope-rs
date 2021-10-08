@@ -20,7 +20,7 @@ cargo run --example 01_visualize_obj
 or
 
 ```sh
-cargo install polyscope-rs
+cargo install polyscope
 ```
 
 ## Special thanks
