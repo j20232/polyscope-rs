@@ -7,13 +7,13 @@ static mut FRAME: i32 = 0;
 const MAX_FRAME: i32 = 100;
 
 fn update() {
-    if ps::generate_imgui_button("Push") {
+    if ps::imgui::button("Push") {
         println!("Pushed");
     }
 
     unsafe {
         let raw: *mut i32 = &mut FRAME;
-        ps::generate_imgui_slider_int("frame", raw, 0, MAX_FRAME);
+        ps::imgui::slider_int("frame", raw, 0, MAX_FRAME);
         FRAME += 1;
         if FRAME > MAX_FRAME {
             FRAME = 0;
@@ -49,7 +49,7 @@ fn main() {
     }
 
     ps::init();
-    polyscope::register_callback(update);
+    ps::register_callback(update);
     unsafe {
         let ps = <ps::point_cloud as ps::pc_vec3<f32>>::register_point_cloud(
             "stopped",
