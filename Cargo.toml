@@ -1,0 +1,18 @@
+[package]
+name = "polyscope"
+version = "0.1.0"
+authors = ["mocobt <mocobt@gmail.com>"]
+edition = "2018"
+build = "build.rs"
+license = "MIT"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+libc = "0.2.103"
+nalgebra = "0.29.0"
+
+[build-dependencies]
+bindgen = "0.59.1"
+cmake = "0.1.45"
