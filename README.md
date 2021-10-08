@@ -12,26 +12,17 @@ Wrapper of [polyscope](https://github.com/nmwsharp/polyscope)
 
 ## Features
 
-- [x] Visualization of point clouds
-  - [x] positions
-  - [x] scalars
-  - [x] vectors
-  - [x] colors
-- [ ] Visualization of surface meshes
-  - [ ] positions
-  - [ ] scalars
-  - [ ] vectors
-  - [ ] colors
-- [ ] Visualization of curve networks
-  - [ ] positions
-  - [ ] scalars
-  - [ ] vectors
-  - [ ] colors
-- [ ] Visualization of volume meshes
-  - [ ] positions
-  - [ ] scalars
-  - [ ] vectors
-  - [ ] colors
+- [x] Basic functions
+   - [x] `init()`, `show()`
+   - [x] Function to register user-defined callbacks
+   - [ ] Functions to generate [imgui](https://github.com/ocornut/imgui) components
+- [x] Visualization of positions, scalars, vectors and colors of point clouds
+- [ ] Visualization of positions, scalars, vectors and colors of surface meshes
+- [ ] Visualization of positions, scalars, vectors and colors of curve networks
+- [ ] Visualization of positions, scalars, vectors and colors of volume meshes
+- [ ] Support for linear algebra libraries
+  - [ ] [nalgebra](https://github.com/dimforge/nalgebra)
+  - [ ] [ndarray](https://github.com/rust-ndarray/ndarray)
 
 ## Installation
 
