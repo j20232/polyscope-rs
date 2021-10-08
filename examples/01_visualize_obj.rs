@@ -2,7 +2,7 @@ extern crate polyscope;
 extern crate tobj;
 
 fn main() {
-    let obj_file = "../assets/omesis/unchan_pink.obj";
+    let obj_file = "./assets/omesis/unchan_pink.obj";
     let (models, _materials) =
         tobj::load_obj(&obj_file, &tobj::LoadOptions::default()).expect("Failed to OBJ load file");
     let mesh = &models[0].mesh;

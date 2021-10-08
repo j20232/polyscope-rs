@@ -12,7 +12,7 @@ Wrapper of [polyscope](https://github.com/nmwsharp/polyscope)
 
 ```sh
 git clone https://github.com/j20232/polyscope-rs --recursive
-cargo run --example 01_initialize
+cargo run --example 01_visualize_obj
 ```
 
 ## Special thanks
