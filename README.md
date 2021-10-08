@@ -17,6 +17,12 @@ git clone https://github.com/j20232/polyscope-rs --recursive
 cargo run --example 01_visualize_obj
 ```
 
+or
+
+```sh
+cargo install polyscope-rs
+```
+
 ## Special thanks
 
 - All contributors of the original [polyscope](https://github.com/nmwsharp/polyscope/graphs/contributors)
