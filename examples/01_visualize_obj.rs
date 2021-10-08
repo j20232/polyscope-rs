@@ -1,6 +1,6 @@
 extern crate polyscope;
-extern crate tobj;
 
+use std::f64::consts::PI;
 static mut STOPPED_POSITIONS: Vec<[f32; 3]> = Vec::new();
 static mut POSITIONS: Vec<[f32; 3]> = Vec::new();
 static mut FRAME: i32 = 0;
@@ -31,32 +31,21 @@ fn update() {
 }
 
 fn main() {
-    let obj_file = "./assets/omesis/unchan_pink.obj";
-    let (models, _materials) =
-        tobj::load_obj(&obj_file, &tobj::LoadOptions::default()).expect("Failed to OBJ load file");
-    let mesh = &models[0].mesh;
-    let flat_pos = &mesh.positions;
-    let print = update;
-
+    let r = 2.0;
+    let num_vertices = 1000;
     let mut scalars = Vec::new();
-    for vtx in 0..mesh.positions.len() / 3 {
+    for vtx in 0..num_vertices {
+        let cos = (2.0 * (PI as f32) * (vtx as f32 / num_vertices as f32)).cos();
+        let sin = (2.0 * (PI as f32) * (vtx as f32 / num_vertices as f32)).sin();
         unsafe {
-            STOPPED_POSITIONS.push([
-                flat_pos[3 * vtx],
-                flat_pos[3 * vtx + 1],
-                flat_pos[3 * vtx + 2],
-            ]);
-            POSITIONS.push([
-                flat_pos[3 * vtx],
-                flat_pos[3 * vtx + 1],
-                flat_pos[3 * vtx + 2],
-            ]);
+            STOPPED_POSITIONS.push([r * sin, r * cos * cos, r * cos * sin]);
+            POSITIONS.push([r * sin, r * cos * cos, r * cos * sin]);
         }
-        scalars.push(flat_pos[3 * vtx] * flat_pos[3 * vtx + 1] * flat_pos[3 * vtx + 2]);
+        scalars.push(r * sin);
     }
 
     polyscope::init();
-    polyscope::register_callback(print);
+    polyscope::register_callback(update);
     unsafe {
         let ps = polyscope::register_point_cloud("stopped", &STOPPED_POSITIONS);
         polyscope::add_point_scalar_quantity(ps, "magnitude", &scalars, true);
