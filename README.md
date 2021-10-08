@@ -1,6 +1,6 @@
 # polyscope-rs: Rust bindings for polyscope
 
-![Teaser](https://github.com/j20232/polyscope-rs/blob/main/assets/teaser/demo.png)
+![Teaser](https://github.com/j20232/polyscope-rs/blob/main/assets/teaser/dynamic.gif)
 
 ## About
 
