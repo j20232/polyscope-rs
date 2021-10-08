@@ -11,7 +11,6 @@ fn main() {
     let dst = cmake::build("src/cpp");
     println!("cargo:rustc-link-search=native={}", dst.display());
     build();
-    debug_option();
     println!("cargo:rustc-link-lib=static=rust_polyscope");
     println!("cargo:rustc-link-lib=static=polyscope");
     println!("cargo:rustc-link-lib=static=glad");

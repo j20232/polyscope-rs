@@ -6,6 +6,8 @@ Wrapper of [polyscope](https://github.com/nmwsharp/polyscope)
 
 (under development)
 
+**Not supported for Linux/OS X** because I don't have PCs.... :)
+
 ## Installation
 
 ```sh
