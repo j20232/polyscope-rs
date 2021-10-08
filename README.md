@@ -26,7 +26,6 @@ cargo install polyscope
 ## Special thanks
 
 - All contributors of the original [polyscope](https://github.com/nmwsharp/polyscope/graphs/contributors)
-- [Omega Sisters](https://www.youtube.com/channel/UCNjTjd2-PMC8Oo_-dCEss7A)
 
 ## License
 
