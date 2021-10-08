@@ -10,6 +10,29 @@ Wrapper of [polyscope](https://github.com/nmwsharp/polyscope)
 
 **Not supported for Linux/OS X** because I don't have PCs.... :)
 
+## Features
+
+- [x] Visualization of point clouds
+  - [x] positions
+  - [x] scalars
+  - [x] vectors
+  - [x] colors
+- [ ] Visualization of surface meshes
+  - [ ] positions
+  - [ ] scalars
+  - [ ] vectors
+  - [ ] colors
+- [ ] Visualization of curve networks
+  - [ ] positions
+  - [ ] scalars
+  - [ ] vectors
+  - [ ] colors
+- [ ] Visualization of volume meshes
+  - [ ] positions
+  - [ ] scalars
+  - [ ] vectors
+  - [ ] colors
+
 ## Installation
 
 ```sh
