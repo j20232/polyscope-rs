@@ -7,11 +7,9 @@ void c_init();
 void c_register_callback(void *function);
 
 // ---------- Point Cloud ----------
-void *c_register_float_point_cloud(const char *name,
-                                   const std::array<float, 3> *pts,
+void *c_register_float_point_cloud(const char *name, const float *pts,
                                    const int len);
-void *c_register_double_point_cloud(const char *name,
-                                    const std::array<double, 3> *pts,
+void *c_register_double_point_cloud(const char *name, const double *pts,
                                     const int len);
 
 void c_add_float_point_scalar_quantity(void *ps_point, const char *name,
@@ -22,21 +20,17 @@ void c_add_double_point_scalar_quantity(void *ps_point, const char *name,
                                         const bool enabled = true);
 
 void *c_add_float_point_color_quantity(void *ps_point, const char *name,
-                                       const std::array<float, 3> *colors,
-                                       const int len,
+                                       const float *colors, const int len,
                                        const bool enabled = true);
 void *c_add_double_point_color_quantity(void *ps_point, const char *name,
-                                        const std::array<double, 3> *colors,
-                                        const int len,
+                                        const double *colors, const int len,
                                         const bool enabled = true);
 
 void *c_add_float_point_vector_quantity(void *ps_point, const char *name,
-                                        const std::array<float, 3> *vecs,
-                                        const int len,
+                                        const float *vecs, const int len,
                                         const bool enabled = true);
 void *c_add_double_point_vector_quantity(void *ps_point, const char *name,
-                                         const std::array<double, 3> *vecs,
-                                         const int len,
+                                         const double *vecs, const int len,
                                          const bool enabled = true);
 
 void c_show();

@@ -1,3 +1,4 @@
+extern crate nalgebra as na;
 extern crate polyscope as ps;
 
 use std::f64::consts::PI;
@@ -26,7 +27,9 @@ fn update() {
             POSITIONS[vid][2] =
                 STOPPED_POSITIONS[vid][2] * (1.0 + (FRAME as f32 / MAX_FRAME as f32));
         }
-        <ps::point_cloud as ps::pc_vec3<f32>>::register_point_cloud("dynamic", &POSITIONS);
+        <ps::point_cloud as ps::pc_vec3<Vec<[f32; 3]>>>::register_point_cloud(
+            "dynamic", &POSITIONS,
+        );
     }
 }
 
@@ -50,17 +53,38 @@ fn main() {
 
     ps::init();
     ps::register_callback(update);
+
+    // nalgebra
+    let mut dm = na::DMatrix::<f64>::zeros(4, 3);
+    for i in 0..dm.nrows() {
+        dm[(i, 0)] = i as f64;
+        dm[(i, 1)] = i as f64 * 0.1;
+        dm[(i, 2)] = i as f64 * 0.2;
+    }
+
+    <ps::point_cloud as ps::pc_vec3<na::DMatrix<f64>>>::register_point_cloud(
+        "nalgebra DMatrix",
+        &dm,
+    );
+
+    // Vec<[T; 3]>
     unsafe {
-        let ps = <ps::point_cloud as ps::pc_vec3<f32>>::register_point_cloud(
+        let ps = <ps::point_cloud as ps::pc_vec3<Vec<[f32; 3]>>>::register_point_cloud(
             "stopped",
             &STOPPED_POSITIONS,
         );
-        <ps::point_cloud as ps::pc_scalar<f32>>::add_scalar_quantity(ps, "mag", &scalars, true);
-        <ps::point_cloud as ps::pc_scalar<f64>>::add_scalar_quantity(
+        <ps::point_cloud as ps::pc_scalar<Vec<f32>>>::add_scalar_quantity(
+            ps, "mag", &scalars, true,
+        );
+        <ps::point_cloud as ps::pc_scalar<Vec<f64>>>::add_scalar_quantity(
             ps, "m_double", &doubles, true,
         );
-        <ps::point_cloud as ps::pc_vec3<f32>>::add_color_quantity(ps, "colors", &colors, true);
-        <ps::point_cloud as ps::pc_vec3<f32>>::add_vector_quantity(ps, "vecs", &colors, true);
+        <ps::point_cloud as ps::pc_vec3<Vec<[f32; 3]>>>::add_color_quantity(
+            ps, "colors", &colors, true,
+        );
+        <ps::point_cloud as ps::pc_vec3<Vec<[f32; 3]>>>::add_vector_quantity(
+            ps, "vecs", &colors, true,
+        );
     }
     ps::show();
 }

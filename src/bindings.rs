@@ -6,13 +6,13 @@ extern "C" {
 
     pub fn c_register_float_point_cloud(
         name: *const libc::c_char,
-        pts: *const [libc::c_float; 3],
+        pts: *const libc::c_float,
         len: libc::c_int,
     ) -> *mut libc::c_void;
 
     pub fn c_register_double_point_cloud(
         name: *const libc::c_char,
-        pts: *const [libc::c_double; 3],
+        pts: *const libc::c_double,
         len: libc::c_int,
     ) -> *mut libc::c_void;
 
@@ -35,7 +35,7 @@ extern "C" {
     pub fn c_add_float_point_color_quantity(
         ps_point: *mut libc::c_void,
         name: *const libc::c_char,
-        colors: *const [libc::c_float; 3],
+        colors: *const libc::c_float,
         len: libc::c_int,
         enabled: bool,
     );
@@ -43,7 +43,7 @@ extern "C" {
     pub fn c_add_double_point_color_quantity(
         ps_point: *mut libc::c_void,
         name: *const libc::c_char,
-        colors: *const [libc::c_double; 3],
+        colors: *const libc::c_double,
         len: libc::c_int,
         enabled: bool,
     );
@@ -51,7 +51,7 @@ extern "C" {
     pub fn c_add_float_point_vector_quantity(
         ps_point: *mut libc::c_void,
         name: *const libc::c_char,
-        vecs: *const [libc::c_float; 3],
+        vecs: *const libc::c_float,
         len: libc::c_int,
         enabled: bool,
     );
@@ -59,7 +59,7 @@ extern "C" {
     pub fn c_add_double_point_vector_quantity(
         ps_point: *mut libc::c_void,
         name: *const libc::c_char,
-        vecs: *const [libc::c_double; 3],
+        vecs: *const libc::c_double,
         len: libc::c_int,
         enabled: bool,
     );

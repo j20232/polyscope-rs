@@ -14,7 +14,7 @@ categories = ["science"]
 
 [dependencies]
 libc = "0.2.103"
-nalgebra = "0.29.0"
+nalgebra = "0.25.4"
 
 [build-dependencies]
 bindgen = "0.59.1"

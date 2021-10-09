@@ -7,6 +7,9 @@ fn build() {
     println!("cargo:rustc-link-lib=shell32");
 }
 
+#[cfg(target_os = "linux")]
+fn build() {}
+
 fn main() {
     let dst = cmake::build("src/cpp");
     println!("cargo:rustc-link-search=native={}", dst.display());

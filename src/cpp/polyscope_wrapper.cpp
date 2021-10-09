@@ -16,21 +16,31 @@ void c_register_callback(void *function) {
     polyscope::state::userCallback = reinterpret_cast<void (*)()>(function);
 }
 
-void *c_register_float_point_cloud(const char *name,
-                                   const std::array<float, 3> *pts,
+void *c_register_float_point_cloud(const char *name, const float *pts,
                                    const int len) {
+    std::vector<float> vec;
+    vec.assign(pts, pts + len * 3);
     std::vector<std::array<float, 3>> out;
-    out.assign(pts, pts + len);
+    for (uint32_t i = 0; i < len; i++) {
+        std::array<float, 3> p = {vec[i * 3 + 0], vec[i * 3 + 1],
+                                  vec[i * 3 + 2]};
+        out.emplace_back(p);
+    }
     auto ps = polyscope::registerPointCloud(name, out);
     auto ret = reinterpret_cast<void *>(ps);
     return ret;
 }
 
-void *c_register_double_point_cloud(const char *name,
-                                    const std::array<double, 3> *pts,
+void *c_register_double_point_cloud(const char *name, const double *pts,
                                     const int len) {
+    std::vector<double> vec;
+    vec.assign(pts, pts + len * 3);
     std::vector<std::array<double, 3>> out;
-    out.assign(pts, pts + len);
+    for (uint32_t i = 0; i < len; i++) {
+        std::array<double, 3> p = {vec[i * 3 + 0], vec[i * 3 + 1],
+                                   vec[i * 3 + 2]};
+        out.emplace_back(p);
+    }
     auto ps = polyscope::registerPointCloud(name, out);
     auto ret = reinterpret_cast<void *>(ps);
     return ret;
@@ -55,38 +65,62 @@ void c_add_double_point_scalar_quantity(void *ps_point, const char *name,
 }
 
 void *c_add_float_point_color_quantity(void *ps_point, const char *name,
-                                       const std::array<float, 3> *colors,
-                                       const int len, const bool enabled) {
-    auto ps = static_cast<polyscope::PointCloud *>(ps_point);
+                                       const float *colors, const int len,
+                                       const bool enabled) {
+    std::vector<float> vec;
+    vec.assign(colors, colors + len * 3);
     std::vector<std::array<float, 3>> out;
-    out.assign(colors, colors + len);
+    for (uint32_t i = 0; i < len; i++) {
+        std::array<float, 3> p = {vec[i * 3 + 0], vec[i * 3 + 1],
+                                  vec[i * 3 + 2]};
+        out.emplace_back(p);
+    }
+    auto ps = static_cast<polyscope::PointCloud *>(ps_point);
     ps->addColorQuantity(name, out)->setEnabled(enabled);
 }
 
 void *c_add_double_point_color_quantity(void *ps_point, const char *name,
-                                        const std::array<double, 3> *colors,
-                                        const int len, const bool enabled) {
-    auto ps = static_cast<polyscope::PointCloud *>(ps_point);
+                                        const double *colors, const int len,
+                                        const bool enabled) {
+    std::vector<double> vec;
+    vec.assign(colors, colors + len * 3);
     std::vector<std::array<double, 3>> out;
-    out.assign(colors, colors + len);
+    for (uint32_t i = 0; i < len; i++) {
+        std::array<double, 3> p = {vec[i * 3 + 0], vec[i * 3 + 1],
+                                   vec[i * 3 + 2]};
+        out.emplace_back(p);
+    }
+    auto ps = static_cast<polyscope::PointCloud *>(ps_point);
     ps->addColorQuantity(name, out)->setEnabled(enabled);
 }
 
 void *c_add_float_point_vector_quantity(void *ps_point, const char *name,
-                                        const std::array<float, 3> *vecs,
-                                        const int len, const bool enabled) {
-    auto ps = static_cast<polyscope::PointCloud *>(ps_point);
+                                        const float *vecs, const int len,
+                                        const bool enabled) {
+    std::vector<float> vec;
+    vec.assign(vecs, vecs + len * 3);
     std::vector<std::array<float, 3>> out;
-    out.assign(vecs, vecs + len);
+    for (uint32_t i = 0; i < len; i++) {
+        std::array<float, 3> p = {vec[i * 3 + 0], vec[i * 3 + 1],
+                                  vec[i * 3 + 2]};
+        out.emplace_back(p);
+    }
+    auto ps = static_cast<polyscope::PointCloud *>(ps_point);
     ps->addVectorQuantity(name, out);
 }
 
 void *c_add_double_point_vector_quantity(void *ps_point, const char *name,
-                                         const std::array<double, 3> *vecs,
-                                         const int len, const bool enabled) {
-    auto ps = static_cast<polyscope::PointCloud *>(ps_point);
+                                         const double *vecs, const int len,
+                                         const bool enabled) {
+    std::vector<double> vec;
+    vec.assign(vecs, vecs + len * 3);
     std::vector<std::array<double, 3>> out;
-    out.assign(vecs, vecs + len);
+    for (uint32_t i = 0; i < len; i++) {
+        std::array<double, 3> p = {vec[i * 3 + 0], vec[i * 3 + 1],
+                                   vec[i * 3 + 2]};
+        out.emplace_back(p);
+    }
+    auto ps = static_cast<polyscope::PointCloud *>(ps_point);
     ps->addVectorQuantity(name, out);
 }
 
