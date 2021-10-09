@@ -4,11 +4,13 @@
 
 ## About
 
-Wrapper of [polyscope](https://github.com/nmwsharp/polyscope)
+Rust wrapper of [polyscope](https://github.com/nmwsharp/polyscope)
 
 (under development)
 
-**Not supported for Linux/OS X** because I don't have PCs.... :)
+- Currently, you can run `polyscope-rs` **only on Windows**
+- **Not supported for Linux/OS X**
+  - I don't have PCs.... :)
 
 ## Features
 
@@ -37,6 +39,10 @@ or
 ```sh
 cargo install polyscope
 ```
+
+## Contribute
+
+Pull requests are welcome
 
 ## Special thanks
 
